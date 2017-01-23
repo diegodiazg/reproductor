@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+	
+	    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+	    	<script language="javascript" type="text/javascript" src="http://cp8.servercaster.com:2199/system/streaminfo.js"></script>
+	    <script type="text/javascript">
+			$(document).ready(function() {
+				//se captura el elemento de tipo audio
+		        var audioElement = document.getElementById('repo');
+		        //funicon anonima que inicia y detiene el streaming
+			    $('#stop').click(function() {
+			    	if (audioElement.paused)
+			    	{	
+			    		$('#stop_img').attr('src', 'img/stop.svg');
+			    		audioElement.play();
+			    		return false;
+			    	}
+			        audioElement.pause();
+			        $('#stop_img').attr('src', 'img/play.svg')
+			    });
+			    // funcion que silencia y habilita el audio
+			    $('#muted').click(function() {			    
+			       if (audioElement.muted){
+			       		$('#mute_img').attr('src', 'img/muteoff.svg');
+			       		audioElement.muted=false;
+			       		console.log(audioElement.muted)
+			       		return false;
+			       }
+			       audioElement.muted=true;
+			       $('#mute_img').attr('src', 'img/mute.svg');
+			    });
+			});
+	    </script>
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+	    <link rel="stylesheet" href="css/style.css" media="screen">
+
+	</head>
+	<body>
+	      <div class="container">
+
+		<div id="player">
+		    <img id="cc_strinfo_trackimageurl_permanec" class="cc_streaminfo cover" id="art" /><br />
+		    <div class="trackinfo">
+		  
+		     
+				  <ul class="collection">
+				    <li class="collection-item avatar">
+				      	<span class="title">    
+				  			<h5 id="cc_strinfo_trackartist_permanec" class="valign cc_streaminfo"></h5>
+						</span>
+				      	<p>     
+							<h3 id="cc_strinfo_tracktitle_permanec" class="valign cc_streaminfo"></h3>
+						 	<br>
+				      	</p>
+				    </li>
+				  </ul>
+		    </div>
+		    <div class="container">
+		        <div class="info">
+		            <div class="cont">
+		                <button id="muted" class="nav">
+		                    <img id="mute_img" src="img/muteoff.svg" />
+		                </button>
+		                <button  id="stop" class="nav waves-effect waves-light">
+		                    <img id="stop_img" class="pad" src="img/stop.svg" />
+		                </button>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+		<audio id="repo" class="audioDemo" autoplay=""   >
+			
+			<source src="http://94.23.5.193:8040/stream" >
+
+		</audio>
+
+
+                       
+          </div>     
+       
+	</body>
+</html>
